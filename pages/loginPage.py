@@ -1,8 +1,7 @@
 from playwright.sync_api import Page, expect
 
-from pages.base_page import BasePage
-from utils import consts
-from utils.consts import FILE_PATH
+from pages.basePage import BasePage
+from utilities.consts import FILE_PATH
 import os
 from dotenv import load_dotenv
 
@@ -11,7 +10,7 @@ class LoginPage(BasePage):
 
     def __init__(self, page: Page):
         super().__init__(page)
-        super().open_page(consts.FILE_PATH)
+        super().openPage(FILE_PATH)
 
     def fillEmail(self):
         email = self.page.get_by_role("textbox", name="Email")

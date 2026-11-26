@@ -21,7 +21,7 @@ def test_negativeLoginPage(page: Page):
 
 @pytest.mark.smoke
 def test_loginPage(loginPage: LoginPage):
-    loginPage.fillEmail()
+    loginPage.fillEmail(os.getenv("TEST_USER_EMAIL"))
     loginPage.fillPassword()
     loginPage.clickSignInButton()
     expect(loginPage.page.get_by_role("navigation", name="Main")).to_be_visible()

@@ -12,13 +12,15 @@ class LoginPage(BasePage):
         super().__init__(page)
         super().openPage(FILE_PATH)
 
-    def fillEmail(self):
-        email = self.page.get_by_role("textbox", name="Email")
-        email.fill(os.getenv("TEST_USER_EMAIL"))
+    def fillEmail(self, email: str | None = None):
+        if email is None:
+            email = os.environ["TEST_USER_EMAIL"]
+        self.page.get_by_role("textbox", name="Email").fill(email)
 
-    def fillPassword(self):
-        password = self.page.get_by_role("textbox", name="Password")
-        password.fill(os.getenv("TEST_USER_PASSWORD"))
+    def fillPassword(self, password: str | None = None):
+        if password is None:
+            password = os.environ["TEST_USER_PASSWORD"]
+        self.page.get_by_role("textbox", name="Password").fill(password)
 
     def clickSignInButton(self):
         button = self.page.get_by_role("button", name="Sign in")

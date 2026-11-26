@@ -42,10 +42,9 @@ jobs:
           TEST_USER_PASSWORD: ${{ secrets.TEST_USER_PASSWORD }}
           SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
           TEST_RECIPIENT_EMAIL: ${{ secrets.TEST_RECIPIENT_EMAIL }}
-          TEST_RECIPIENT_NAME: ${{ vars.TEST_RECIPIENT_NAME }}
+          TEST_RECIPIENT_NAME: ${{ secrets.TEST_RECIPIENT_NAME }}        
         run:
-   
-          python -m pytest --strict-markers --html=reports/test-report.html --self-contained-html
+            python -m pytest --strict-markers --html=reports/test-report.html --self-contained-html
 
 
       - name: Upload report and failure artifacts
